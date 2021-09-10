@@ -452,7 +452,7 @@ class DayPicker extends StatelessWidget {
             (selectableDayPredicate != null &&
                 !selectableDayPredicate!(dayToBuild));
         BoxDecoration? decoration;
-        TextStyle? itemStyle = themeData.body1;
+        TextStyle? itemStyle =TextStyle();
         final bool isSelectedFirstDay = selectedFirstDate.year == year &&
             selectedFirstDate.month == month &&
             selectedFirstDate.day == day;
@@ -467,12 +467,12 @@ class DayPicker extends StatelessWidget {
             : null;
         if (isSelectedFirstDay &&
             (isSelectedLastDay == null || isSelectedLastDay)) {
-          itemStyle = themeData.body2;
+          itemStyle = TextStyle();
           decoration = new BoxDecoration(
               color: themeData.accentColor, shape: BoxShape.circle);
         } else if (isSelectedFirstDay) {
           // The selected day gets a circle background highlight, and a contrasting text color.
-          itemStyle = themeData.body2;
+          itemStyle = TextStyle();
           decoration = new BoxDecoration(
               color: themeData.accentColor,
               borderRadius: BorderRadius.only(
@@ -480,7 +480,7 @@ class DayPicker extends StatelessWidget {
                 bottomLeft: new Radius.circular(50.0),
               ));
         } else if (isSelectedLastDay != null && isSelectedLastDay) {
-          itemStyle = themeData.body2;
+          itemStyle = TextStyle();
           decoration = new BoxDecoration(
               color: themeData.accentColor,
               borderRadius: BorderRadius.only(
@@ -492,8 +492,7 @@ class DayPicker extends StatelessWidget {
               color: themeData.accentColor.withOpacity(0.1),
               shape: BoxShape.rectangle);
         } else if (disabled) {
-          itemStyle = themeData.body1!
-              .copyWith(color: themeData.disabledColor);
+          itemStyle = TextStyle();
         } else if (currentDate.year == year &&
             currentDate.month == month &&
             currentDate.day == day) {
@@ -941,7 +940,7 @@ class _YearPickerState extends State<YearPicker> {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
     final ThemeData themeData = Theme.of(context);
-    final TextStyle? style = themeData.body1;
+    final TextStyle? style =TextStyle();
     return new ListView.builder(
       controller: scrollController,
       itemExtent: _itemExtent,
@@ -952,8 +951,7 @@ class _YearPickerState extends State<YearPicker> {
             (widget.selectedLastDate != null &&
                 year == widget.selectedLastDate!.year);
         final TextStyle? itemStyle = isSelected
-            ? themeData.textTheme.headline!
-                .copyWith(color: themeData.accentColor)
+            ? TextStyle()
             : style;
         return new InkWell(
           key: new ValueKey<int>(year),
